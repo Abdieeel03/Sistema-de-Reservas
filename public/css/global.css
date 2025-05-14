@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Colores base */
+    --color-primary: #395756;
+    --color-primary-variant: #1B3022;
+    --color-secondary: #C9ADA7;
+    --color-secondary-variant: #9A8C98;
+
+    /* Colores de estado */
+    --color-success: #4F7942;
+    --color-warning: #FFB80B;
+    --color-error: #B00020;
+
+    /* Fondo y superficies */
+    --color-background: #F2E9E4;
+    --color-surface: #F2E9E4;
+
+    /* Texto e íconos sobre colores */
+    --on-primary: #FFFFFF;
+    --on-secondary: #395756;
+    --on-background: #1B3022;
+
+    /* Fuentes */
+    --font-primary: "Raleway", sans-serif;
+    --font-secondary: "Inter", sans-serif;
+
+    /* Tipografía - Desktop */
+    --fs-h1: 64px;
+    --fw-h1: 700;
+    --ls-h1: -1px;
+
+    --fs-h2: 48px;
+    --fw-h2: 600;
+    --ls-h2: -0.5px;
+
+    --fs-h3: 36px;
+    --fw-h3: 600;
+    --ls-h3: 0px;
+
+    --fs-h4: 28px;
+    --fw-h4: 500;
+    --ls-h4: 0.15px;
+
+    --fs-body: 18px;
+    --fw-body: 400;
+    --ls-body: 0.5px;
+
+    --fs-small: 14px;
+    --fw-small: 400;
+    --ls-small: 0.25px;
+
+    --fs-caption: 13px;
+    --fw-caption: 400;
+    --ls-caption: 0.25px;
+
+    --fs-button: 16px;
+    --fw-button: 600;
+    --ls-button: 1.25px;
+
+    /* Tipografía - Mobile */
+    --fs-h1-sm: 48px;
+    --fs-h2-sm: 36px;
+    --fs-h3-sm: 28px;
+    --fs-h4-sm: 22px;
+    --fs-body-sm: 16px;
+    --fs-small-sm: 12px;
+    --fs-caption-sm: 11px;
+    --fs-button-sm: 14px;
+}
