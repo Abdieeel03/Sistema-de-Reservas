@@ -23,13 +23,11 @@ body::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: url("../img/fondo-reservas.webp") no-repeat -55.646px -53.503px;
-    background-size: 105.1% 124.263%;
+    background: url("../img/fondo-reservas.webp") no-repeat center center;
+    background-size: cover;
     opacity: 0.2;
-    /* 👈 aquí reduces la opacidad de la imagen */
     z-index: -1;
     pointer-events: none;
-    /* evita que la capa bloquee clicks */
 }
 
 h1 {
@@ -160,20 +158,20 @@ main.secciones-reserva {
     padding: 20px;
 }
 
-.seccion-reserva{
+.seccion-reserva {
     display: none;
 }
 
-.seccion-reserva.activo{
+.seccion-reserva.activo {
     display: block;
 }
 
-.seccion-reserva.activo h1{
+.seccion-reserva.activo h1 {
     color: #fff;
 }
 
 
-.hidden{
+.hidden {
     display: none;
 }
 
@@ -184,4 +182,70 @@ footer {
     text-align: center;
     padding: 10px;
     font-size: var(--fs-small);
+}
+
+/*Escalados para header, nav y footer*/
+
+@media (max-width: 880px) {
+    .pasos-reserva ul {
+        gap: 40px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+    }
+
+    .pasos-reserva ul::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .pasos-reserva ul::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+    }
+
+    .pasos-reserva {
+        justify-content: center;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .pasos-reserva .paso {
+        white-space: nowrap;
+        font-size: 14px;
+    }
+
+    header {
+        padding: 10px 20px;
+    }
+
+    .logo-container h4 {
+        font-size: 20px;
+    }
+
+    main.secciones-reserva {
+        padding: 10px;
+    }
+
+    footer {
+        font-size: var(--fs-small-sm);
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pasos-reserva ul {
+        gap: 20px;
+    }
+
+    .logo-container img {
+        height: 45px;
+    }
+
+    .logo-container h4 {
+        font-size: 18px;
+    }
+
+    .pasos-reserva .paso {
+        font-size: 12px;
+    }
 }
