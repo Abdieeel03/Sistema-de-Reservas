@@ -1,12 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/reservas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Reserva en Siete Sopas</title>
 </head>
+
 <body>
-    
+    <header>
+        <a href="../index.html" class="logo-container">
+            <img src="../img/logo-sietesopas.webp" alt="logo de siete sopas" class="logo-img">
+            <h4 class="logo-name">Siete Sopas</h4>
+        </a>
+    </header>
+    <nav class="pasos-reserva">
+        <ul>
+            <li class="paso activo" data-step="1"><i class="fa-solid fa-circle-info"></i>Tus datos</li>
+            <li class="paso" data-step="2"><i class="fa-solid fa-person"></i>Personas</li>
+            <li class="paso" data-step="3"><i class="fa-solid fa-calendar"></i>Fecha</li>
+            <li class="paso" data-step="4"><i class="fa-solid fa-clock"></i>Hora</li>
+            <li class="paso" data-step="5"><i class="fa-solid fa-receipt"></i>Mesa</li>
+        </ul>
+    </nav>
+    <main class="secciones-reserva">
+        <section id="seccion-datos" class="seccion-reserva activo">
+            <h1>paso1</h1>
+        </section>
+        <section id="seccion-personas" class="seccion-reserva hidden">
+            <h1>paso2</h1>
+        </section>
+        <section id="seccion-fecha" class="seccion-reserva hidden">
+            <h1>paso3</h1>
+        </section>
+        <section id="seccion-hora" class="seccion-reserva hidden">
+            <h1>paso4</h1>
+        </section>
+        <section id="seccion-mesa" class="seccion-reserva hidden">
+            <h1>paso5</h1>
+        </section>
+        <section id="seccion-resumen" class="seccion-reserva hidden">
+            <h1>paso5</h1>
+        </section>
+    </main>
+    <footer>
+        © 2025 Siete Sopas. Todos los derechos reservados.
+    </footer>
+
+    <script>
+        const pasos = document.querySelectorAll('.pasos-reserva .paso');
+        const secciones = document.querySelectorAll('.seccion-reserva');
+
+        pasos.forEach(paso => {
+            paso.addEventListener('click', () => {
+                // Cambiar clase activa en pasos
+                pasos.forEach(p => p.classList.remove('activo'));
+                paso.classList.add('activo');
+
+                // Mostrar la sección correspondiente
+                const pasoId = paso.dataset.step; // p.ej. "1", "2", etc.
+
+                secciones.forEach(sec => {
+                    sec.classList.add('hidden');
+                    sec.classList.remove('activo');
+                });
+
+                // Mapear data-step numérico a id de sección correspondiente
+                let idSeccion = "";
+                switch (pasoId) {
+                    case "1": idSeccion = "seccion-datos"; break;
+                    case "2": idSeccion = "seccion-personas"; break;
+                    case "3": idSeccion = "seccion-fecha"; break;
+                    case "4": idSeccion = "seccion-hora"; break;
+                    case "5": idSeccion = "seccion-mesa"; break;
+                    // agrega más si tienes más pasos
+                    default: idSeccion = "seccion-datos"; // fallback
+                }
+
+                const actual = document.getElementById(idSeccion);
+                if (actual) {
+                    actual.classList.remove('hidden');
+                    actual.classList.add('activo');
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
