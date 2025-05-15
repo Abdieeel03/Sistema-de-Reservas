@@ -11,6 +11,9 @@ body {
     font-family: var(--font-secondary);
     background-color: var(--color-background);
     color: var(--on-background);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 h1 {
@@ -205,6 +208,7 @@ footer{
     padding: 60px 0;
     background-color: var(--color-primary);
     color: var(--on-primary);
+    margin-top: auto;
 }
 .footer-container{
     max-width: 1200px;
