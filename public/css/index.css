@@ -5,6 +5,10 @@
     list-style: none;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -80,11 +84,23 @@ a {
 
 /* Estilos para el header */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
     display: flex;
     justify-content: space-around;
     min-height: 80px;
     align-items: center;
     padding: 10px 40px;
+}
+
+header.scrolled {
+    background-color: var(--color-background);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo-container {
@@ -152,6 +168,7 @@ nav {
 
 /*Estilos para las secciones*/
 .main-container {
+    margin-top: 91px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -237,6 +254,7 @@ textarea {
     background-color: var(--color-primary);
     border-radius: 4px;
 }
+
 .error-message {
     color: var(--color-error);
     font-size: var(--fs-small);
@@ -313,29 +331,35 @@ footer {
 
 /*Estilos responsive*/
 @media (max-width: 1000px) {
-    .seccion-container{
+    .seccion-container {
         padding: 20px;
     }
-    .contacto-form-container input, textarea{
+
+    .contacto-form-container input,
+    textarea {
         max-width: 400px;
     }
 }
-@media (max-width: 840px) {
+
+@media (max-width: 850px) {
     .nav-list li a {
         font-size: var(--fs-small);
         font-weight: bold;
         letter-spacing: var(--ls-small);
     }
+
     .contacto-title-text {
         font-size: var(--fs-h4-sm);
         font-weight: bold;
         letter-spacing: var(--ls-h4-sm);
     }
+
     .contacto-title-subtext {
         font-size: var(--fs-body-sm);
         font-weight: var(--fw-body-sm);
         letter-spacing: var(--ls-body-sm);
     }
+
     .contacto-form-container button {
         font-size: var(--fs-button-sm);
         font-weight: bold;
@@ -344,7 +368,7 @@ footer {
 
 }
 
-@media (max-width: 790px) {
+@media (max-width: 803px) {
     header {
         flex-direction: column;
         align-items: center;
@@ -360,9 +384,12 @@ footer {
         font-weight: bold;
         letter-spacing: var(--ls-small);
     }
+
     .main-container {
+        margin-top: 140px;
         padding: 20px 10px;
     }
+
     .seccion-container {
         flex-direction: column;
         align-items: center;
@@ -406,9 +433,12 @@ footer {
         text-align: center;
         width: 100%;
     }
-    .contacto-form-container input, textarea {
+
+    .contacto-form-container input,
+    textarea {
         border-radius: 10px;
     }
+
     .contacto-form-container button {
         width: 100%;
         text-align: center;
