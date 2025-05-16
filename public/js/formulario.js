@@ -35,9 +35,7 @@ document.getElementById('form').addEventListener('submit', function (e) {
     }
 
     if (valid) {
-        alert("Formulario enviado correctamente.");
-        // Aquí podrías enviar los datos al backend si tuvieras uno.
-        // this.submit(); // Solo si quieres que realmente se envíe
+        this.submit(); 
         this.reset(); // Limpia el formulario
     }
 });
