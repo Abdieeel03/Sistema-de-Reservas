@@ -21,15 +21,15 @@
     </header>
     <nav class="pasos-reserva">
         <ul>
-            <li class="paso activo" data-step="1"><i class="fa-solid fa-circle-info"></i>Tus datos</li>
+            <li class="paso" data-step="1"><i class="fa-solid fa-circle-info"></i>Tus datos</li>
             <li class="paso" data-step="2"><i class="fa-solid fa-person"></i>Personas</li>
             <li class="paso" data-step="3"><i class="fa-solid fa-calendar"></i>Fecha</li>
             <li class="paso" data-step="4"><i class="fa-solid fa-clock"></i>Hora</li>
-            <li class="paso" data-step="5"><i class="fa-solid fa-receipt"></i>Mesa</li>
+            <li class="paso activo" data-step="5"><i class="fa-solid fa-receipt"></i>Mesa</li>
         </ul>
     </nav>
     <main class="secciones-reserva">
-        <section id="seccion-datos" class="seccion-reserva activo">
+        <section id="seccion-datos" class="seccion-reserva hidden">
             <h1>paso1</h1>
         </section>
         <section id="seccion-personas" class="seccion-reserva hidden">
@@ -41,8 +41,20 @@
         <section id="seccion-hora" class="seccion-reserva hidden">
             <h1>paso4</h1>
         </section>
-        <section id="seccion-mesa" class="seccion-reserva hidden">
-            <h1>paso5</h1>
+        <section id="seccion-mesa" class="seccion-reserva activo">
+            <div class="mesa-container">
+                <div class="titulo-mesa">
+                    <h4>Seleccione una mesa:</h4>
+                </div>
+                <div class="botones-mesas">
+                    <div class="cabecera">
+                        <button id="btn-sala-principal" class="btn-cabecera activo">Sala principal</button>
+                        <button id="btn-sala-exterior" class="btn-cabecera no-activo">Sala exterior</button>
+                    </div>
+                    <div id="contenedor-mesas" class="mesas">
+                    </div>
+                </div>
+            </div>
         </section>
         <section id="seccion-resumen" class="seccion-reserva hidden">
             <h1>paso5</h1>
@@ -52,44 +64,8 @@
         © 2025 Siete Sopas. Todos los derechos reservados.
     </footer>
 
-    <script>
-        const pasos = document.querySelectorAll('.pasos-reserva .paso');
-        const secciones = document.querySelectorAll('.seccion-reserva');
-
-        pasos.forEach(paso => {
-            paso.addEventListener('click', () => {
-                // Cambiar clase activa en pasos
-                pasos.forEach(p => p.classList.remove('activo'));
-                paso.classList.add('activo');
-
-                // Mostrar la sección correspondiente
-                const pasoId = paso.dataset.step; // p.ej. "1", "2", etc.
-
-                secciones.forEach(sec => {
-                    sec.classList.add('hidden');
-                    sec.classList.remove('activo');
-                });
-
-                // Mapear data-step numérico a id de sección correspondiente
-                let idSeccion = "";
-                switch (pasoId) {
-                    case "1": idSeccion = "seccion-datos"; break;
-                    case "2": idSeccion = "seccion-personas"; break;
-                    case "3": idSeccion = "seccion-fecha"; break;
-                    case "4": idSeccion = "seccion-hora"; break;
-                    case "5": idSeccion = "seccion-mesa"; break;
-                    // agrega más si tienes más pasos
-                    default: idSeccion = "seccion-datos"; // fallback
-                }
-
-                const actual = document.getElementById(idSeccion);
-                if (actual) {
-                    actual.classList.remove('hidden');
-                    actual.classList.add('activo');
-                }
-            });
-        });
-    </script>
+    <script src="../js/reservas/navJS.js"></script>
+    <script src="../js/reservas/mesas.js"></script>
 </body>
 
 </html>

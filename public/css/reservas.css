@@ -13,7 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: var(--font-secondary);
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(14, 14, 14);
     color: var(--on-background);
     position: relative;
     z-index: 1;
@@ -25,7 +25,7 @@ body::before {
     inset: 0;
     background: url("../img/fondo-reservas.webp") no-repeat center center;
     background-size: cover;
-    opacity: 0.2;
+    opacity: 0.3;
     z-index: -1;
     pointer-events: none;
 }
@@ -153,9 +153,10 @@ header {
 
 /*Estilos para los sections*/
 main.secciones-reserva {
-    flex: 1;
+    flex: 1 1 auto;
     overflow: hidden;
     padding: 20px;
+    min-height: 0;
 }
 
 .seccion-reserva {
@@ -163,7 +164,13 @@ main.secciones-reserva {
 }
 
 .seccion-reserva.activo {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    padding: 20px;
 }
 
 .seccion-reserva.activo h1 {
@@ -175,6 +182,104 @@ main.secciones-reserva {
     display: none;
 }
 
+/*Estilos para seccion mesa*/
+.mesa-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    gap: 32px;
+}
+
+.titulo-mesa {
+    width: 100%;
+    border-bottom: 1px solid var(--on-primary);
+    padding: 10px;
+}
+
+.titulo-mesa h4 {
+    color: var(--on-primary);
+}
+
+/* Cabecera de selección */
+.botones-mesas {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+/* Botones de la sala */
+.cabecera {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.btn-cabecera {
+    border: 0.5px solid #fff;
+    background-color: transparent;
+    color: var(--on-primary);
+    border-radius: 16px;
+    min-width: 170px;
+    min-height: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+}
+
+.btn-cabecera.activo {
+    background-color: var(--color-primary-variant);
+}
+
+.btn-cabecera.no-activo:hover {
+    background-color: var(--color-primary-variant);
+    color: var(--on-primary);
+}
+
+/* Botones de la mesa */
+.mesas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 16px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.btn-mesa {
+    padding: 4px 40px;
+    min-width: 134px;
+    height: 30px;
+    border-radius: 16px;
+    background-color: transparent;
+    border: 0.5px solid #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+    color: var(--on-primary);
+}
+
+.btn-mesa.disponible {
+    border: 2px solid var(--color-success);
+}
+
+.btn-mesa.no-disponible {
+    border: 2px solid var(--color-error);
+    text-decoration: line-through;
+}
+
+.btn-mesa.disponible:hover {
+    background-color: var(--color-success);
+    color: var(--on-primary);
+}
+
+.btn-mesa.no-disponible:hover {
+    cursor: not-allowed;
+}
+
 /* Footer pequeño */
 footer {
     background-color: var(--color-primary-variant);
@@ -184,9 +289,9 @@ footer {
     font-size: var(--fs-small);
 }
 
-/*Escalados para header, nav y footer*/
+/*Escalados*/
 
-@media (max-width: 880px) {
+@media (max-width: 1060px) {
     .pasos-reserva ul {
         gap: 40px;
         overflow-x: auto;
@@ -232,6 +337,15 @@ footer {
     }
 }
 
+@media (max-width: 700px) {
+    .mesas {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+        gap: 14px;
+        width: 100%;
+    }
+}
+
 @media (max-width: 480px) {
     .pasos-reserva ul {
         gap: 20px;
@@ -247,5 +361,28 @@ footer {
 
     .pasos-reserva .paso {
         font-size: 12px;
+    }
+
+    .mesas {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 14px;
+        width: 100%;
+    }
+
+    .btn-mesa {
+        padding: 4px 20px;
+        min-width: 100px;
+        height: 30px;
+        font-size: var(--fs-button-sm);
+    }
+
+    .btn-cabecera {
+        min-width: 120px;
+        min-height: 30px;
+        font-size: var(--fs-button-sm);
+    }
+
+    .titulo-mesa h4 {
+        font-size: var(--fs-h4-sm);
     }
 }
