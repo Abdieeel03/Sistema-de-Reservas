@@ -22,41 +22,107 @@
 
     <nav class="pasos-reserva">
         <ul>
-            <li class="paso activo" data-step="1"><i class="fa-solid fa-circle-info"></i>Tus datos</li>
-            <li class="paso" data-step="2"><i class="fa-solid fa-person"></i>Personas</li>
-            <li class="paso" data-step="3"><i class="fa-solid fa-calendar"></i>Fecha</li>
-            <li class="paso" data-step="4"><i class="fa-solid fa-clock"></i>Hora</li>
-            <li class="paso" data-step="5"><i class="fa-solid fa-receipt"></i>Mesa</li>
+            <li id="btn-datos" class="paso activo" data-step="1"><i class="fa-solid fa-circle-info"></i>Tus datos</li>
+            <li id="btn-personas" class="paso" data-step="2"><i class="fa-solid fa-person"></i>Personas</li>
+            <li id="btn-fecha" class="paso" data-step="3"><i class="fa-solid fa-calendar"></i>Fecha</li>
+            <li id="btn-hora" class="paso" data-step="4"><i class="fa-solid fa-clock"></i>Hora</li>
+            <li id="btn-mesa" class="paso" data-step="5"><i class="fa-solid fa-receipt"></i>Mesa</li>
         </ul>
     </nav>
 
     <main class="secciones-reserva">
 
-        <section id="seccion-datos" class="seccion-reserva activo">
-            <h1>paso1</h1>
+        <section id="seccion-datos" class="seccion-reserva">
+            <div id="container-datos" class="container">
+                <div class="titulo">
+                    <h4>Ingrese sus datos:</h4>
+                </div>
+                <div class="form-container">
+                    <form id="formulario-reserva">
+                        <div class="inputs">
+                            <div class="input-container">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="input-container">
+                                <label for="apellidos">Dni:</label>
+                                <input type="text" id="apellidos" name="apellidos" required>
+                            </div>
+                        </div>
+                        <div class="inputs">
+                            <div class="input-container">
+                                <label for="telefono">Teléfono:</label>
+                                <input type="tel" id="telefono" name="telefono" required>
+                            </div>
+                            <div class="input-container">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="terminos-condiciones">
+                            <div class="input-container">
+                                <input type="checkbox" id="terminos" name="terminos" required>
+                                <label for="terminos">Acepto los <a href="../docs/terminos.html"
+                                        target="_blank">términos y condiciones</a></label>
+                            </div>
+                        </div>
+                        <div class="button">
+                            <button type="submit">Continuar <i class="fa fa-chevron-right"
+                                    aria-hidden="true"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </section>
 
-        <section id="seccion-personas" class="seccion-reserva hidden">
-            <h1>paso2</h1>
+        <section id="seccion-personas" class="seccion-reserva activo">
+            <div class="container">
+                <div class="titulo">
+                    <h4>Elija la cantidad de personas:</h4>
+                </div>
+                <div class="botones-container">
+                    <div class="boton-personas">
+                        <button type="button" id="btn-1" class="btn-persona">1</button>
+                    </div>
+                    <div class="boton-personas">
+                        <button type="button" id="btn-2" class="btn-persona">2</button>
+                    </div>
+                    <div class="boton-personas">
+                        <button type="button" id="btn-3" class="btn-persona">3</button>
+                    </div>
+                    <div class="boton-personas">
+                        <button type="button" id="btn-4" class="btn-persona">4</button>
+                    </div>
+                    <div class="boton-personas">
+                        <button type="button" id="btn-5" class="btn-persona">5</button>
+                    </div>
+                    <div class="boton-personas">
+                        <button type="button" id="btn-6" class="btn-persona">6</button>
+                    </div>
+                    <div class="boton-personas">
+                        <button type="button" id="btn-mas" class="btn-persona">+</button>
+                </div>
+            </div>
         </section>
 
-        <section id="seccion-fecha" class="seccion-reserva hidden">
+        <section id="seccion-fecha" class="seccion-reserva">
             <h1>paso3</h1>
         </section>
 
-        <section id="seccion-hora" class="seccion-reserva hidden">
+        <section id="seccion-hora" class="seccion-reserva">
             <h1>paso4</h1>
         </section>
 
-        <section id="seccion-mesa" class="seccion-reserva hidden">
-            <div class="mesa-container">
-                <div class="titulo-mesa">
+        <section id="seccion-mesa" class="seccion-reserva">
+            <div class="container">
+                <div class="titulo">
                     <h4>Seleccione una mesa:</h4>
                 </div>
                 <div class="botones-mesas">
                     <div class="cabecera">
-                        <button id="btn-sala-principal" class="btn-cabecera activo">Sala principal</button>
-                        <button id="btn-sala-exterior" class="btn-cabecera no-activo">Sala exterior</button>
+                        <button type="button" id="btn-sala-principal" class="btn-cabecera activo">Sala
+                            principal</button>
+                        <button type="button" id="btn-sala-exterior" class="btn-cabecera">Sala exterior</button>
                     </div>
                     <div id="contenedor-mesas" class="mesas">
                     </div>

@@ -182,8 +182,7 @@ main.secciones-reserva {
     display: none;
 }
 
-/*Estilos para seccion mesa*/
-.mesa-container {
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -192,17 +191,126 @@ main.secciones-reserva {
     gap: 32px;
 }
 
-.titulo-mesa {
+.titulo {
     width: 100%;
     border-bottom: 1px solid var(--on-primary);
     padding: 10px;
 }
 
-.titulo-mesa h4 {
+.titulo h4 {
     color: var(--on-primary);
 }
 
-/* Cabecera de selección */
+/*Formulario datos reserva*/
+#container-datos {
+    gap: 16px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container .inputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 95px;
+    margin: 40px 0px;
+    width: 80%;
+}
+
+.form-container .inputs .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.form-container .inputs .input-container label {
+    font-size: var(--fs-body);
+    font-weight: var(--fw-body);
+    letter-spacing: var(--ls-body);
+    color: var(--on-primary);
+}
+
+.form-container .inputs .input-container input {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid var(--on-primary);
+    background-color: transparent;
+    color: var(--on-primary);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-body);
+    letter-spacing: var(--ls-body);
+}
+
+.form-container .terminos-condiciones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container .terminos-condiciones .input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.form-container .terminos-condiciones .input-container input {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--on-primary);
+}
+
+.form-container .terminos-condiciones .input-container label {
+    font-size: var(--fs-small);
+    font-weight: var(--fw-small);
+    letter-spacing: var(--ls-small);
+    color: var(--on-primary);
+}
+
+.form-container .terminos-condiciones .input-container a {
+    color: var(--on-primary);
+    text-decoration: underline;
+    font-size: var(--fs-small);
+    font-weight: var(--fw-small);
+    letter-spacing: var(--ls-small);
+}
+
+.form-container .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    width: 100%;
+}
+
+.form-container .button button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--color-primary-variant);
+    color: var(--on-primary);
+    font-size: var(--fs-button);
+    font-weight: var(--fw-button);
+    letter-spacing: var(--ls-button);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.form-container .button button:hover {
+    background-color: var(--on-primary);
+    color: var(--color-primary-variant);
+}
+
+/* Botones mesas */
 .botones-mesas {
     display: flex;
     flex-direction: column;
