@@ -80,27 +80,15 @@
                 <div class="titulo">
                     <h4>Elija la cantidad de personas:</h4>
                 </div>
-                <div class="botones-container">
-                    <div class="boton-personas">
-                        <button type="button" id="btn-1" class="btn-persona">1</button>
-                    </div>
-                    <div class="boton-personas">
-                        <button type="button" id="btn-2" class="btn-persona">2</button>
-                    </div>
-                    <div class="boton-personas">
-                        <button type="button" id="btn-3" class="btn-persona">3</button>
-                    </div>
-                    <div class="boton-personas">
-                        <button type="button" id="btn-4" class="btn-persona">4</button>
-                    </div>
-                    <div class="boton-personas">
-                        <button type="button" id="btn-5" class="btn-persona">5</button>
-                    </div>
-                    <div class="boton-personas">
-                        <button type="button" id="btn-6" class="btn-persona">6</button>
-                    </div>
-                    <div class="boton-personas">
-                        <button type="button" id="btn-mas" class="btn-persona">+</button>
+                <div class="botones-container" id="botones-container">
+                    <div class="fila">
+                        <button type="button" class="boton-personas">1</button>
+                        <button type="button" class="boton-personas">2</button>
+                        <button type="button" class="boton-personas">3</button>
+                        <button type="button" class="boton-personas">4</button>
+                        <button type="button" class="boton-personas">5</button>
+                        <button type="button" class="boton-personas">6</button>
+                        <button type="button" class="boton-personas" id="btn-mas">+</button>
                     </div>
                 </div>
         </section>
@@ -110,7 +98,19 @@
         </section>
 
         <section id="seccion-hora" class="seccion-reserva">
-            <h1>paso4</h1>
+            <div class="container">
+                <div class="titulo">
+                    <h4>Seleccione una hora:</h4>
+                </div>
+                <div class="botones-horas">
+                    <div class="cabecera">
+                        <button type="button" id="btn-dia" class="btn-cabecera activo">Día</button>
+                        <button type="button" id="btn-tarde" class="btn-cabecera">Tarde</button>
+                        <button type="button" id="btn-noche" class="btn-cabecera">Noche</button>
+                    </div>
+                    <div id="contenedor-horas" class="horas"></div>
+                </div>
+            </div>
         </section>
 
         <section id="seccion-mesa" class="seccion-reserva">
@@ -124,8 +124,7 @@
                             principal</button>
                         <button type="button" id="btn-sala-exterior" class="btn-cabecera">Sala exterior</button>
                     </div>
-                    <div id="contenedor-mesas" class="mesas">
-                    </div>
+                    <div id="contenedor-mesas" class="mesas"></div>
                 </div>
             </div>
         </section>
@@ -140,8 +139,10 @@
         © 2025 Siete Sopas. Todos los derechos reservados.
     </footer>
 
+    <script src="../js/reservas/personas.js"></script>
     <script src="../js/reservas/navJS.js"></script>
     <script src="../js/reservas/mesas.js"></script>
+    <script src="../js/reservas/horas.js"></script>
 </body>
 
 </html>

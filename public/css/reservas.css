@@ -310,6 +310,106 @@ main.secciones-reserva {
     color: var(--color-primary-variant);
 }
 
+/*Botones personas*/
+.botones-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fila {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    /* por si se reduce el ancho */
+}
+
+.boton-personas {
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    border: 0.5px solid #fff;
+    color: var(--on-primary);
+    font-size: var(--fs-button);
+    font-weight: var(--fw-button);
+    letter-spacing: var(--ls-button);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton-personas:hover {
+    background-color: var(--on-primary);
+    color: var(--color-primary-variant);
+}
+
+/*Botones hora*/
+.botones-horas {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.fila-horas {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.horas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.btn-hora {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 20px;
+    min-width: 150px;
+    height: 30px;
+    border-radius: 16px;
+    background-color: transparent;
+    border: 0.5px solid #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: var(--on-primary);
+    text-align: center;
+}
+
+.btn-hora.disponible {
+    border: 2px solid var(--color-success);
+}
+
+.btn-hora.no-disponible {
+    border: 2px solid var(--color-error);
+    text-decoration: line-through;
+    cursor: not-allowed;
+}
+
+.btn-hora.disponible:hover {
+    background-color: var(--color-success);
+    color: var(--on-primary);
+}
+
+.btn-hora.no-disponible:hover {
+    background-color: transparent;
+    color: var(--on-primary);
+}
+
+
 /* Botones mesas */
 .botones-mesas {
     display: flex;
