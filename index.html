@@ -20,8 +20,8 @@
         </a>
         <nav>
             <ul class="nav-list">
-                <li><a href="">Nosotros</a></li>
-                <li><a href="">La carta</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#carta">La carta</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
             <button type="button" class="btn-reserva"
@@ -30,13 +30,45 @@
         </nav>
     </header>
     <main class="main-container">
+
         <section class="seccion-container hero">
             <div class="hero-background"></div>
             <div class="hero-text-container">
-                <h1 class="hero-title">¡Bienvenido a Siete Sopas!</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, ut. Dignissimos provident perferendis deleniti repellat quis assumenda. Odit facere aliquam quidem eum necessitatibus quasi suscipit error minima, qui molestiae minus.</p>
+                <h1 class="hero-title">¡Bienvenido al nuevo sistema de reservas!</h1>
+                <p>Acompañanos y prueba nuestras deliciosas sopas y segundos 👨‍🍳</p>
             </div>
         </section>
+
+        <section id="nosotros" class="seccion-container">
+            <div class="text-container">
+                <h3>Sobre Nosotros 🔎🍜</h3>
+                <p>
+                    En Siete Sopas creemos que una buena sopa puede reconfortar el alma. Desde nuestros inicios, nos
+                    propusimos rescatar los sabores de casa y convertir cada plato en una experiencia memorable. Nuestra
+                    carta, cuidadosamente seleccionada, ofrece una variedad de sopas tradicionales peruanas y del mundo,
+                    preparadas con ingredientes frescos y mucho cariño.
+                    ¡Bienvenido a Siete Sopas, donde cada cucharada tiene historia!
+                </p>
+            </div>
+            <div class="imagen-container">
+                <img src="./public/img/fondo-reservas.webp" alt="Restaurante Siete Sopas">
+            </div>
+        </section>
+
+        <section id="carta" class="seccion-container">
+            <div class="imagen-container">
+                <img src="./public/img/img-lacarta.webp" alt="Restaurante Siete Sopas">
+            </div>
+            <div class="text-container">
+                <h3>Nuestra Carta 🔎🍽️</h3>
+                <p>
+                    Descubre todas las sopas y sabores que tenemos para ti. Desde clásicos peruanos
+                    hasta opciones internacionales, ¡encuentra tu favorita!
+                </p>
+                <a href="#carta">Ver Carta <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            </div>
+        </section>
+
         <section id="contacto" class="seccion-container">
             <div class="contacto-title-container">
                 <h3 class="contacto-title-text">¡Te escuchamos!</h3>
@@ -49,44 +81,45 @@
                 <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
                 <span class="error-message" id="error-email"></span>
 
-                <textarea name="mensaje" id="mensaje" placeholder="Escribe tu mensaje aquí" rows="8" required></textarea>
+                <textarea name="mensaje" id="mensaje" placeholder="Escribe tu mensaje aquí" rows="8"
+                    required></textarea>
                 <span class="error-message" id="error-mensaje"></span>
 
                 <button type="submit" form="form">Enviar <i class="fa-solid fa-chevron-right"></i></button>
             </form>
         </section>
     </main>
+
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-row">
                 <div class="footer-links">
                     <h4 class="footer-title">Developers</h4>
                     <ul class="footer-list">
-                        <li><a href="">Acerca de Nosotros</a></li>
+                        <li><a href="#">Acerca de Nosotros</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Enlaces directos</h4>
                     <ul>
-                        <li><a href="">Sobre Siete Sopas</a></li>
-                        <li><a href="">La carta</a></li>
-                        <li><a href="">Contactanos</a></li>
-                        <li><a href="">¡Reserva ahora!</a></li>
+                        <li><a href="#nosotros">Sobre Siete Sopas</a></li>
+                        <li><a href="#carta">La carta</a></li>
+                        <li><a href="./public/pages/paginaReservas.html">¡Reserva ahora!</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Ayuda</h4>
                     <ul>
-                        <li><a href="">Terminos y condiciones</a></li>
-                        <li><a href="">Política de privacidad</a></li>
+                        <li><a href="#">Terminos y condiciones</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Siguenos</h4>
                     <div class="social-link">
-                        <a href=""><i class="fab fa-facebook-f"></i></a>
-                        <a href=""><i class="fab fa-instagram"></i></a>
-                        <a href=""><i class="fab fa-x"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-x"></i></a>
                     </div>
                 </div>
             </div>
