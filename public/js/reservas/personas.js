@@ -1,25 +1,37 @@
 const contenedor = document.getElementById("botones-container");
 const botonMas = document.getElementById("btn-mas");
 const fila = document.querySelector(".fila");
-botonMas.addEventListener("click", () => {
-    // Crear una nueva fila
-    const nuevaFila = document.createElement("div");
-    nuevaFila.classList.add("fila");
 
-    // Agregar los botones 7 al 12
-    for (let i = 7; i <= 12; i++) {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "boton-personas";
-        btn.textContent = i;
-        nuevaFila.appendChild(btn);
+let botonesExtrasVisibles = false;
+let nuevaFila = null; // se usará para guardar la fila con botones 7-12
+
+botonMas.addEventListener("click", () => {
+    if (!botonesExtrasVisibles) {
+        // Si aún no se ha creado, la creamos
+        if (!nuevaFila) {
+            nuevaFila = document.createElement("div");
+            nuevaFila.classList.add("fila");
+
+            for (let i = 7; i <= 12; i++) {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "boton-personas";
+                btn.textContent = i;
+                nuevaFila.appendChild(btn);
+            }
+
+            nuevaFila.style.gap = "52px";
+            contenedor.appendChild(nuevaFila);
+        } else {
+            nuevaFila.style.display = "flex"; // mostrar si ya existía pero estaba oculta
+        }
+
+        botonMas.textContent = "−";
+    } else {
+        nuevaFila.style.display = "none"; // ocultar
+        botonMas.textContent = "+";
     }
 
-    // Agregar la nueva fila al contenedor
-    contenedor.appendChild(nuevaFila);
-
-    // Ocultar el botón +
-    botonMas.style.display = "none";
     fila.style.gap = "52px";
-    nuevaFila.style.gap = "52px";
+    botonesExtrasVisibles = !botonesExtrasVisibles;
 });
