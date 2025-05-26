@@ -522,14 +522,13 @@ main.secciones-reserva {
 
 /* Botones de la mesa */
 .mesas {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 16px;
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    justify-items: center;
 }
 
 .btn-mesa {
