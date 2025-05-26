@@ -76,12 +76,6 @@ a {
     letter-spacing: var(--ls-button);
 }
 
-.body-container {
-    display: grid;
-    min-height: 100dvh;
-    grid-template-rows: auto 1fr auto;
-}
-
 /* Estilos para el header */
 header {
     display: flex;
@@ -320,11 +314,11 @@ nav {
 
 .contacto-form-container input,
 textarea {
-    width: 100vh;
+    width: 100%;
     max-width: 500px;
     padding: 8px;
     border: 1px solid var(--color-primary);
-    background-color: var(--color-surface);
+    background-color: var(--color-background);
     color: #000;
     font-size: var(--fs-small);
     font-weight: var(--fw-small);
@@ -333,7 +327,7 @@ textarea {
 
 .contacto-form-container textarea {
     font-family: var(--font-secondary);
-    resize: none;
+    resize: none ;
     width: 100vh;
     box-sizing: border-box;
     overflow-y: auto;

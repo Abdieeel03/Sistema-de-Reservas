@@ -94,7 +94,17 @@
         </section>
 
         <section id="seccion-fecha" class="seccion-reserva">
-            <h1>paso3</h1>
+            <div class="container">
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button id="prev">&#10094;</button>
+                        <h4 id="monthYear"></h4>
+                        <button id="next">&#10095;</button>
+                    </div>
+                    <div class="calendar-days" id="calendarDays"></div>
+                    <div class="calendar-dates" id="calendarDates"></div>
+                </div>
+            </div>
         </section>
 
         <section id="seccion-hora" class="seccion-reserva">
@@ -122,7 +132,8 @@
                     <div class="cabecera">
                         <button type="button" id="btn-sala-principal" class="btn-cabecera activo">Sala
                             principal</button>
-                        <button type="button" id="btn-sala-exterior" class="btn-cabecera">Sala exterior</button>
+                        <button type="button" id="btn-sala-exterior" class="btn-cabecera no-activo">Sala
+                            exterior</button>
                     </div>
                     <div id="contenedor-mesas" class="mesas"></div>
                 </div>
@@ -143,6 +154,7 @@
     <script src="../js/reservas/navJS.js"></script>
     <script src="../js/reservas/mesas.js"></script>
     <script src="../js/reservas/horas.js"></script>
+    <script src="../js/reservas/calendario.js"></script>
 </body>
 
 </html>
