@@ -486,6 +486,11 @@ footer {
         padding: 20px 10px;
     }
 
+    .text-container {
+        max-width: 80%;
+        text-align: justify;
+    }
+
     .footer-row {
         text-align: center;
     }

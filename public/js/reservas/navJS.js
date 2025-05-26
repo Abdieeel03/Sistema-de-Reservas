@@ -8,7 +8,7 @@ pasos.forEach(paso => {
         paso.classList.add('activo');
 
         // Mostrar la sección correspondiente
-        const pasoId = paso.dataset.step; // p.ej. "1", "2", etc.
+        const pasoId = paso.dataset.step;
 
         secciones.forEach(sec => {
             sec.classList.add('hidden');
