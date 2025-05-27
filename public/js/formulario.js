@@ -1,5 +1,5 @@
 document.getElementById('form').addEventListener('submit', function (e) {
-    e.preventDefault(); // Evita el envío si hay errores
+    e.preventDefault(); 
 
     let valid = true;
 
