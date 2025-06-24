@@ -315,6 +315,7 @@ main.secciones-reserva {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
 .fila {
@@ -348,6 +349,7 @@ main.secciones-reserva {
     color: var(--color-primary-variant);
 }
 
+
 /*Botones calendario*/
 .calendar-container {
     max-width: 420px;
@@ -364,7 +366,7 @@ main.secciones-reserva {
     align-items: center;
 }
 
-.calendar-header h4{
+.calendar-header h4 {
     color: var(--on-primary);
 }
 
@@ -376,7 +378,7 @@ main.secciones-reserva {
     cursor: pointer;
 }
 
-.calendar-days div{
+.calendar-days div {
     color: var(--on-primary);
 }
 
@@ -574,6 +576,24 @@ footer {
 /*Escalados*/
 
 @media (max-width: 1060px) {
+
+    .form-container .inputs {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-container .inputs .input-container {
+        width: 100%;
+    }
+
+    .form-container .inputs .input-container label {
+        font-size: 14px;
+    }
+
+    .form-container .button button {
+        width: 100%;
+    }
+
     .pasos-reserva ul {
         gap: 40px;
         overflow-x: auto;
