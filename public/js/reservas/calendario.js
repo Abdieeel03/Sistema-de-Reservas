@@ -7,7 +7,14 @@ const nextBtn = document.getElementById("next");
 let date = new Date();
 
 const weekDays = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
-const fechasNoDisponibles = ["2025-05-24", "2025-05-25", "2025-05-26", "2025-06-27"];
+let fechasNoDisponibles = [];
+
+fetch('../../backend/fechas-no-disponibles.php')
+    .then(response => response.json())
+    .then(data => {
+        fechasNoDisponibles = data;
+        renderCalendar();
+    });
 
 function renderCalendar() {
     const year = date.getFullYear();
@@ -58,7 +65,17 @@ function renderCalendar() {
             button.style.opacity = "0.6";
         } else {
             button.addEventListener("click", () => {
-                alert(`Seleccionaste el ${i} de ${date.toLocaleString("es-ES", { month: "long" })} de ${year}`);
+                const fechaSeleccionada = fechaISO;
+                datos.fecha = fechaSeleccionada;
+
+                // Primero obtener horarios no disponibles
+                obtenerHorasNoDisponibles(fechaSeleccionada);
+
+                // Luego emitir evento personalizado para avanzar en el flujo
+                const eventoSeleccion = new CustomEvent("fecha-seleccionada", {
+                    detail: { fecha: fechaSeleccionada }
+                });
+                document.dispatchEvent(eventoSeleccion);
             });
         }
 
@@ -83,4 +100,3 @@ nextBtn.addEventListener("click", () => {
     renderCalendar();
 });
 
-renderCalendar();

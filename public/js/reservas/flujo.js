@@ -11,14 +11,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const seccionHora = document.getElementById('seccion-hora');
     const seccionMesa = document.getElementById('seccion-mesa');
 
-    let datos = {};
     let personas = 0;
+    let fechaSeleccionada = null;
 
     disableButton(btnDatos);
     disableButton(btnPersonas);
     disableButton(btnFecha);
     disableButton(btnHora);
-    disableButton(btnMesa); 
+    disableButton(btnMesa);
 
     function showStep(step) {
         seccionDatos.classList.add('hidden');
@@ -73,11 +73,11 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
 
         datos.nombre = document.getElementById('nombre').value;
-        datos.apellidos = document.getElementById('apellidos').value;
+        datos.dni = document.getElementById('dni').value;
         datos.telefono = document.getElementById('telefono').value;
         datos.email = document.getElementById('email').value;
 
-        if (!datos.nombre || !datos.apellidos || !datos.telefono || !datos.email) {
+        if (!datos.nombre || !datos.dni || !datos.telefono || !datos.email) {
             alert('Por favor, ingrese todos los datos.');
             return;
         }
@@ -95,6 +95,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
             showStep(3);
         });
+    });
+
+    document.addEventListener("fecha-seleccionada", function (e) {
+        fechaSeleccionada = e.detail.fecha;
+        console.log("Fecha guardada:", fechaSeleccionada);
+        showStep(4);
+    });
+
+    document.addEventListener("hora-seleccionada", (e) => {
+        console.log("Hora seleccionada:", e.detail.hora);
+        showStep(5);
     });
 
     btnDatos.addEventListener('click', function () { showStep(1); });
