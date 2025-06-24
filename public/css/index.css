@@ -157,15 +157,14 @@ nav {
     align-items: center;
     padding: 0;
     gap: 20px;
-    
 }
 
 .seccion-container {
     display: flex;
+    flex-direction: row;
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    padding: 20px 40px;
     margin-bottom: 60px;
 }
 
@@ -216,9 +215,11 @@ nav {
 .hero-text-container h1 {
     color: var(--color-primary-variant);
 }
+
 .hero-text-container p {
     color: var(--color-primary-variant);
 }
+
 /*Seccion sobre nosotros y la carta*/
 #carta {
     padding: 12px 0;
@@ -230,6 +231,7 @@ nav {
     padding: 12px 0;
     gap: 160px;
     justify-content: center;
+    margin: 0px 20px;
 }
 
 .imagen-container img {
@@ -329,7 +331,7 @@ textarea {
 
 .contacto-form-container textarea {
     font-family: var(--font-secondary);
-    resize: none ;
+    resize: none;
     width: 100vh;
     box-sizing: border-box;
     overflow-y: auto;
@@ -420,7 +422,7 @@ footer {
 }
 
 /*Estilos responsive*/
-@media (max-width: 1000px) {
+@media (max-width: 1160px) {
     .seccion-container {
         padding: 20px;
     }
@@ -428,6 +430,38 @@ footer {
     .contacto-form-container input,
     textarea {
         max-width: 400px;
+    }
+
+    /*Seccion sobre nosotros y la carta*/
+    #carta {
+        gap: 80px;
+    }
+
+    #nosotros {
+        gap: 80px;
+    }
+
+    .imagen-container img {
+        width: 100%;
+        max-width: 400px;
+        opacity: 0.7;
+    }
+
+    .text-container {
+        gap: 16px;
+        max-width: 50%;
+    }
+
+    .text-container h3 {
+        font-size: var(--fs-h4);
+    }
+
+    .text-container p {
+        font-size: var(--fw-body-sm);
+    }
+
+    .text-container a {
+        font-size: var(--fs-button-sm);
     }
 }
 
@@ -456,6 +490,59 @@ footer {
         letter-spacing: var(--ls-button-sm);
     }
 
+    #contacto {
+        gap: 40px;
+    }
+
+    .seccion-container {
+        flex-direction: column;
+        text-align: left;
+        margin-bottom: 50px;
+    }
+
+    .imagen-container {
+        margin-left: 20px;
+        margin-top: 0;
+    }
+
+    .text-container {
+        margin-bottom: 0;
+    }
+
+    #nosotros {
+        gap: 40px;
+    }
+
+    #carta {
+        gap: 40px;
+    }
+
+    .imagen-container img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        opacity: 0.6;
+    }
+
+    #nosotros .text-container {
+        order: 1;
+        /* El texto viene primero */
+    }
+
+    #nosotros .imagen-container {
+        order: 2;
+        /* La imagen viene después */
+    }
+
+    #carta .text-container {
+        order: 1;
+        /* El texto de la carta va primero */
+    }
+
+    #carta .imagen-container {
+        order: 2;
+        /* La imagen de la carta va después */
+    }
 }
 
 @media (max-width: 803px) {
@@ -469,28 +556,20 @@ footer {
         padding: 10px 0;
     }
 
+    .hero-text-container h1 {
+        font-size: var(--fs-h1-sm);
+        letter-spacing: var(--ls-h1-sm);
+    }
+
+    .hero-text-container p {
+        font-size: var(--fs-body-sm);
+        letter-spacing: var(--ls-body-sm);
+    }
+
     .nav-list li a {
         font-size: var(--fs-small);
         font-weight: bold;
         letter-spacing: var(--ls-small);
-    }
-
-    .main-container {
-        margin-top: 140px;
-        padding: 20px 10px;
-    }
-
-    .seccion-container {
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        gap: 20px;
-        padding: 20px 10px;
-    }
-
-    .text-container {
-        max-width: 80%;
-        text-align: justify;
     }
 
     .footer-row {
