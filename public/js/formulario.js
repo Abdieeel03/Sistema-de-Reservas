@@ -1,9 +1,8 @@
 document.getElementById('form').addEventListener('submit', function (e) {
-    e.preventDefault(); 
+    e.preventDefault();
 
     let valid = true;
 
-    // Nombre
     const nombre = document.getElementById('nombre');
     const errorNombre = document.getElementById('error-nombre');
     if (nombre.value.trim() === '') {
@@ -13,7 +12,6 @@ document.getElementById('form').addEventListener('submit', function (e) {
         errorNombre.textContent = '';
     }
 
-    // Email
     const email = document.getElementById('email');
     const errorEmail = document.getElementById('error-email');
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -24,7 +22,6 @@ document.getElementById('form').addEventListener('submit', function (e) {
         errorEmail.textContent = '';
     }
 
-    // Mensaje
     const mensaje = document.getElementById('mensaje');
     const errorMensaje = document.getElementById('error-mensaje');
     if (mensaje.value.trim() === '') {
@@ -35,7 +32,24 @@ document.getElementById('form').addEventListener('submit', function (e) {
     }
 
     if (valid) {
-        this.submit(); 
-        this.reset(); // Limpia el formulario
+        const formData = new FormData(this);
+
+        fetch('backend/send-message.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Mensaje recibido:\nNombre: ' + data.nombre + '\nEmail: ' + data.email + '\nMensaje: ' + data.mensaje);
+                    this.reset();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('Hubo un error al enviar el mensaje. Inténtalo de nuevo más tarde.');
+                console.error("Error:", error);
+            });
     }
 });

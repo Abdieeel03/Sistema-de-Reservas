@@ -113,7 +113,7 @@ header {
     color: var(--on-primary);
 }
 
-/*Estilos para el nav*/
+/* Estilos para el nav */
 .pasos-reserva {
     width: 100%;
     background-color: var(--color-background);
@@ -137,7 +137,7 @@ header {
     padding: 10px 16px;
     color: #777;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, background-color 0.3s ease, border 0.3s ease;
     font-size: var(--fs-button);
     font-weight: var(--fw-button);
     user-select: none;
@@ -149,6 +149,18 @@ header {
 
 .pasos-reserva .paso.activo {
     color: #000;
+    font-weight: bold;
+    border-bottom: 2px solid #4CAF50;
+    background-color: #e8f5e8;
+}
+
+.pasos-reserva .paso.activo:hover {
+    background-color: #d4f0d4;
+}
+
+.pasos-reserva .paso:disabled {
+    color: #ccc;
+    cursor: not-allowed;
 }
 
 /*Estilos para los sections*/
@@ -160,10 +172,6 @@ main.secciones-reserva {
 }
 
 .seccion-reserva {
-    display: none;
-}
-
-.seccion-reserva.activo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -173,7 +181,7 @@ main.secciones-reserva {
     padding: 20px;
 }
 
-.seccion-reserva.activo h1 {
+.seccion-reserva h1 {
     color: #fff;
 }
 
