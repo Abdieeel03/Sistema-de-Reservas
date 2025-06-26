@@ -9,12 +9,19 @@ let date = new Date();
 const weekDays = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
 let fechasNoDisponibles = [];
 
-fetch('../../backend/fechas-no-disponibles.php')
-    .then(response => response.json())
-    .then(data => {
-        fechasNoDisponibles = data;
-        renderCalendar();
-    });
+function obtenerFechasNoDisponibles() {
+    fetch('../../backend/fechas-no-disponibles.php')
+        .then(response => response.json())
+        .then(data => {
+            fechasNoDisponibles = data;
+            renderCalendar();
+        });
+}
+
+function iniciarSeccionCalendario() {
+    date = new Date();
+    obtenerFechasNoDisponibles();
+}
 
 function renderCalendar() {
     const year = date.getFullYear();
@@ -67,11 +74,6 @@ function renderCalendar() {
             button.addEventListener("click", () => {
                 const fechaSeleccionada = fechaISO;
                 datos.fecha = fechaSeleccionada;
-
-                // Primero obtener horarios no disponibles
-                obtenerHorasNoDisponibles(fechaSeleccionada);
-
-                // Luego emitir evento personalizado para avanzar en el flujo
                 const eventoSeleccion = new CustomEvent("fecha-seleccionada", {
                     detail: { fecha: fechaSeleccionada }
                 });

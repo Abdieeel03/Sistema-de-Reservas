@@ -572,6 +572,80 @@ main.secciones-reserva {
     cursor: not-allowed;
 }
 
+/*Seccion resumen*/
+#seccion-resumen {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.container-resumen {
+    background-color: var(--color-surface);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    max-width: 400px;
+    width: 100%;
+    color: var(--on-background);
+    text-align: left;
+}
+
+.container-resumen h3 {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+.resumen-datos p {
+    margin: 0.6rem 0;
+    font-size: 1.1rem;
+    color: var(--on-background);
+}
+
+.resumen-datos strong {
+    color: var(--color-primary-variant);
+}
+
+.resumen-botones {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.btn-confirmar,
+.btn-volver {
+    padding: 0.8rem 1.25rem;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-confirmar {
+    background-color: var(--color-success);
+    color: var(--on-primary);
+}
+
+.btn-confirmar:hover {
+    background-color: #3e653a;
+}
+
+.btn-volver {
+    background-color: var(--color-secondary);
+    color: var(--on-secondary);
+}
+
+.btn-volver:hover {
+    background-color: var(--color-error);
+
+}
+
 /* Footer pequeño */
 footer {
     background-color: var(--color-primary-variant);
@@ -653,6 +727,29 @@ footer {
         grid-template-rows: repeat(3, auto);
         gap: 14px;
         width: 100%;
+    }
+
+    .container-resumen {
+        padding: 1rem;
+        max-width: 90%;
+    }
+
+    .resumen-datos p {
+        font-size: 1rem;
+    }
+
+    .resumen-botones {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .btn-confirmar,
+    .btn-volver {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.9rem;
+        border-radius: 12px;
     }
 }
 

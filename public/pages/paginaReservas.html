@@ -144,7 +144,25 @@
         </section>
 
         <section id="seccion-resumen" class="seccion-reserva hidden">
-            <h1>paso5</h1>
+            <div class="container-resumen">
+                <h3>Resumen de tu reserva</h3>
+                <div class="resumen-datos">
+                    <p><strong>Nombre:</strong> <span id="resumen-nombre"></span></p>
+                    <p><strong>DNI:</strong> <span id="resumen-dni"></span></p>
+                    <p><strong>Teléfono:</strong> <span id="resumen-telefono"></span></p>
+                    <p><strong>Email:</strong> <span id="resumen-email"></span></p>
+                    <p><strong>Personas:</strong> <span id="resumen-personas"></span></p>
+                    <p><strong>Fecha:</strong> <span id="resumen-fecha"></span></p>
+                    <p><strong>Hora:</strong> <span id="resumen-hora"></span></p>
+                    <p><strong>Mesa:</strong> <span id="resumen-mesa"></span></p>
+                    <p><strong>Zona:</strong> <span id="resumen-zona"></span></p>
+                </div>
+
+                <div class="resumen-botones">
+                    <button id="btn-confirmar-reserva" class="btn-confirmar">Confirmar Reserva</button>
+                    <button id="btn-volver" class="btn-volver">Volver</button>
+                </div>
+            </div>
         </section>
 
     </main>
@@ -153,9 +171,11 @@
         © 2025 Siete Sopas. Todos los derechos reservados.
     </footer>
 
-    <script src="../js/reservas/flujo.js"></script>
-    <script src="../js/reservas/horas.js"></script>
-    <script src="../js/reservas/calendario.js"></script>
+    <script src="/public/js/reservas/flujo.js""></script>
+    <script src=" /public/js/reservas/calendario.js"></script>
+    <script src="/public/js/reservas/horas.js"></script>
+    <script src="/public/js/reservas/mesas.js"></script>
+
 </body>
 
 </html>

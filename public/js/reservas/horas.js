@@ -2,12 +2,11 @@ let horasPorFranja = {};
 let horasNoDisponibles = {};
 let franjaSeleccionada = 'dia';
 
-// Cargar horas disponibles por franja (todas)
 fetch('/backend/horas-disponibles.php')
     .then(r => r.json())
     .then(data => {
         horasPorFranja = data;
-        cargarHoras(franjaSeleccionada); // Día por defecto
+        cargarHoras(franjaSeleccionada);
     });
 
 const botonesCabecera = document.querySelectorAll('.btn-cabecera');
@@ -25,6 +24,13 @@ function obtenerHorasNoDisponibles(fecha) {
         .catch(err => {
             console.error("Error al cargar horarios no disponibles:", err);
         });
+}
+
+function iniciarSeccionHoras(fecha) {
+    botonesCabecera.forEach(btn => btn.classList.remove('activo'));
+    document.getElementById('btn-dia').classList.add('activo');
+    franjaSeleccionada = 'dia'; // Reiniciar a día por defecto
+    obtenerHorasNoDisponibles(fecha);
 }
 
 // Mostrar los botones de hora por franja

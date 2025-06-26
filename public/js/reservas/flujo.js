@@ -10,9 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const seccionFecha = document.getElementById('seccion-fecha');
     const seccionHora = document.getElementById('seccion-hora');
     const seccionMesa = document.getElementById('seccion-mesa');
-
-    let personas = 0;
-    let fechaSeleccionada = null;
+    const seccionResumen = document.getElementById('seccion-resumen');
 
     disableButton(btnDatos);
     disableButton(btnPersonas);
@@ -54,6 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 seccionMesa.classList.remove('hidden');
                 btnMesa.classList.add('activo');
                 break;
+            case 6:
+                seccionResumen.classList.remove('hidden');
+                break;
             default:
                 break;
         }
@@ -71,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('formulario-reserva').addEventListener('submit', function (e) {
         e.preventDefault();
-
         datos.nombre = document.getElementById('nombre').value;
         datos.dni = document.getElementById('dni').value;
         datos.telefono = document.getElementById('telefono').value;
@@ -88,23 +88,52 @@ document.addEventListener('DOMContentLoaded', function () {
     const botonesPersonas = document.querySelectorAll('.boton-personas');
     botonesPersonas.forEach(boton => {
         boton.addEventListener('click', function () {
-            personas = parseInt(boton.textContent);
-
+            datos.personas = parseInt(boton.textContent);
             botonesPersonas.forEach(b => b.classList.remove('activo'));
             boton.classList.add('activo');
-
+            iniciarSeccionCalendario();
             showStep(3);
         });
     });
 
     document.addEventListener("fecha-seleccionada", function (e) {
-        fechaSeleccionada = e.detail.fecha;
-        console.log("Fecha guardada:", fechaSeleccionada);
+        datos.fechaSeleccionada = e.detail.fecha;
+        console.log("Fecha guardada:", datos.fechaSeleccionada);
+        iniciarSeccionHoras(datos.fechaSeleccionada);
         showStep(4);
     });
 
     document.addEventListener("hora-seleccionada", (e) => {
-        console.log("Hora seleccionada:", e.detail.hora);
+        datos.horaSeleccionada = e.detail.hora;
+        console.log("Hora seleccionada:", datos.horaSeleccionada);
+        iniciarSeccionMesas(datos.fechaSeleccionada, datos.horaSeleccionada);
+        showStep(5);
+    });
+
+    document.addEventListener("mesa-seleccionada", (e) => {
+        datos.mesaSeleccionada = e.detail.mesa_id;
+        datos.zonaSeleccionada = e.detail.zona_id;
+        console.log("Mesa seleccionada:", datos.mesaSeleccionada, "Zona:", datos.zonaSeleccionada);
+        document.getElementById('resumen-nombre').textContent = datos.nombre;
+        document.getElementById('resumen-dni').textContent = datos.dni;
+        document.getElementById('resumen-telefono').textContent = datos.telefono;
+        document.getElementById('resumen-email').textContent = datos.email;
+        document.getElementById('resumen-personas').textContent = datos.personas;
+        document.getElementById('resumen-fecha').textContent = datos.fechaSeleccionada;
+        document.getElementById('resumen-hora').textContent = datos.horaSeleccionada;
+        document.getElementById('resumen-mesa').textContent = datos.mesaSeleccionada;
+        document.getElementById('resumen-zona').textContent = datos.zonaSeleccionada == 1 ? 'Sala Principal' : 'Sala Exterior';
+        showStep(6);
+    });
+
+    document.getElementById('btn-confirmar-reserva').addEventListener('click', () => {
+        alert("Reserva enviada al servidor (simulado)");
+        showStep(1);
+        datos = {};
+    });
+
+    document.getElementById('btn-volver').addEventListener('click', () => {
+        iniciarSeccionMesas(datos.fechaSeleccionada, datos.horaSeleccionada);
         showStep(5);
     });
 
@@ -114,6 +143,5 @@ document.addEventListener('DOMContentLoaded', function () {
     btnHora.addEventListener('click', function () { showStep(4); });
     btnMesa.addEventListener('click', function () { showStep(5); });
 
-    // Mostrar el primer paso al cargar la página
     showStep(1);
 });

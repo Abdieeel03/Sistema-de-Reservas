@@ -1,51 +1,83 @@
+let mesasPorSeccion = {};
+let mesasNoDisponibles = {};
+let seccionSeleccionada = 'principal';
+
 const btnSalaPrincipal = document.getElementById("btn-sala-principal");
 const btnSalaExterior = document.getElementById("btn-sala-exterior");
-const contendorMesas = document.getElementById("contenedor-mesas");
-const btnNav = document.getElementById("btn-mesa");
+const contenedorMesas = document.getElementById("contenedor-mesas");
 
-const mesasPrincipal = [
-    { nombre: "Mesa 01", disponible: true },
-    { nombre: "Mesa 02", disponible: false },
-    { nombre: "Mesa 03", disponible: false },
-    { nombre: "Mesa 04", disponible: true },
-    { nombre: "Mesa 05", disponible: true },
-    { nombre: "Mesa 06", disponible: true }
-];
+fetch('/backend/mesas-disponibles.php')
+    .then(r => r.json())
+    .then(data => {
+        mesasPorSeccion = data;
+        cargarMesas(seccionSeleccionada);
+    });
 
-const mesasExterior = [
-    { nombre: "Mesa 07", disponible: true },
-    { nombre: "Mesa 08", disponible: true },
-    { nombre: "Mesa 09", disponible: false }
-];
+function obtenerMesasNoDisponibles(fecha, hora) {
+    fetch(`/backend/mesas-no-disponibles.php?fecha=${fecha}&hora=${hora}`)
+        .then(res => res.json())
+        .then(data => {
+            mesasNoDisponibles = data;
+            cargarMesas(seccionSeleccionada);
+            console.log("Mesas no disponibles cargadas:", mesasNoDisponibles);
+        })
+        .catch(err => {
+            console.error("Error al obtener mesas no disponibles:", err);
+        });
+}
 
-btnNav.addEventListener('click', () => {
-    btnSalaExterior.classList.remove('activo');
+function iniciarSeccionMesas(fecha, hora) {
     btnSalaPrincipal.classList.add('activo');
-    renderizarMesas(mesasPrincipal);
-});
+    btnSalaExterior.classList.remove('activo');
+    seccionSeleccionada = 'principal';
+    obtenerMesasNoDisponibles(fecha, hora);
+}
 
-function renderizarMesas(mesas) {
-    contendorMesas.innerHTML = '';
-    mesas.forEach(mesa => {
+function cargarMesas(seccion) {
+    seccionSeleccionada = seccion;
+    contenedorMesas.innerHTML = '';
+
+    if (!mesasPorSeccion[seccion]) return;
+
+    const todas = mesasPorSeccion[seccion];
+    const noDisponibles = mesasNoDisponibles[seccion] || [];
+
+    todas.forEach(mesa => {
         const btn = document.createElement('button');
-        btn.className = `btn-mesa ${mesa.disponible ? 'disponible' : 'no-disponible'}`;
-        btn.textContent = mesa.nombre;
-        contendorMesas.appendChild(btn);
+        btn.textContent = `Mesa ${mesa.numero}`;
+        btn.className = 'btn-mesa';
+
+        if (noDisponibles.includes(mesa.id)) {
+            btn.classList.add('no-disponible');
+            btn.disabled = true;
+        } else {
+            btn.classList.add('disponible');
+            btn.addEventListener('click', () => {
+                datos.mesa_id = mesa.id;
+                datos.zona_id = mesa.zona_id;
+
+                const eventoMesa = new CustomEvent("mesa-seleccionada", {
+                    detail: {
+                        mesa_id: mesa.id,
+                        zona_id: mesa.zona_id
+                    }
+                });
+                document.dispatchEvent(eventoMesa);
+            });
+        }
+
+        contenedorMesas.appendChild(btn);
     });
 }
 
 btnSalaPrincipal.addEventListener('click', () => {
-    btnSalaExterior.classList.remove('activo');
     btnSalaPrincipal.classList.add('activo');
-    renderizarMesas(mesasPrincipal);
+    btnSalaExterior.classList.remove('activo');
+    cargarMesas('principal');
 });
 
 btnSalaExterior.addEventListener('click', () => {
     btnSalaExterior.classList.add('activo');
     btnSalaPrincipal.classList.remove('activo');
-    renderizarMesas(mesasExterior);
+    cargarMesas('exterior');
 });
-
-// Inicializar con la sala principal
-btnSalaPrincipal.classList.add('activo');
-renderizarMesas(mesasPrincipal);

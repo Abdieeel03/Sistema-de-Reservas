@@ -2,7 +2,6 @@
 require 'db.php';
 header('Content-Type: application/json');
 
-// Validar parámetro fecha
 if (!isset($_GET['fecha'])) {
     http_response_code(400);
     echo json_encode(["error" => "Falta el parámetro 'fecha'."]);
@@ -11,11 +10,9 @@ if (!isset($_GET['fecha'])) {
 
 $fecha = $_GET['fecha'];
 
-// Obtener cantidad total de mesas
 $mesasResult = $conn->query("SELECT COUNT(*) AS total FROM mesas");
 $cantidadMesas = $mesasResult->fetch_assoc()['total'];
 
-// Consultar horarios llenos para esa fecha
 $sql = "SELECT h.hora
         FROM reservas r
         INNER JOIN horarios h ON r.horario_id = h.id
@@ -35,9 +32,9 @@ $franjas = [
 ];
 
 while ($row = $result->fetch_assoc()) {
-    $hora = $row['hora'];             // Ej: "14:00:00"
+    $hora = $row['hora'];
     $horaEntera = intval(substr($hora, 0, 2));
-    $soloHora = substr($hora, 0, 5);  // Ej: "14:00"
+    $soloHora = substr($hora, 0, 5);
 
     if ($horaEntera >= 9 && $horaEntera < 12) {
         $franjas['dia'][] = $soloHora;
@@ -47,5 +44,7 @@ while ($row = $result->fetch_assoc()) {
         $franjas['noche'][] = $soloHora;
     }
 }
+
+$stmt->close();
 
 echo json_encode($franjas);
