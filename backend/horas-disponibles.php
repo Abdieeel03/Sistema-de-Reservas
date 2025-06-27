@@ -3,7 +3,7 @@ require_once 'db.php';
 header("Content-Type: application/json");
 
 // Consultar todas las horas disponibles de la tabla "horarios"
-$sql = "SELECT hora FROM horarios ORDER BY hora";
+$sql = "SELECT id, hora FROM horarios ORDER BY hora";
 $result = $conn->query($sql);
 
 $franjas = [
@@ -14,16 +14,22 @@ $franjas = [
 
 while ($row = $result->fetch_assoc()) {
     $hora = $row['hora'];
+    $id = $row['id'];
+
+    $horaObj = [
+        "id" => (int) $id,
+        "hora" => substr($hora, 0, 5)
+    ];
 
     // Convertir "HH:MM:SS" a int para comparación
     $horaEntera = intval(substr($hora, 0, 2));
 
     if ($horaEntera >= 9 && $horaEntera < 12) {
-        $franjas['dia'][] = substr($hora, 0, 5); // "09:00"
+        $franjas['dia'][] = $horaObj;
     } elseif ($horaEntera >= 12 && $horaEntera < 18) {
-        $franjas['tarde'][] = substr($hora, 0, 5);
+        $franjas['tarde'][] = $horaObj;
     } elseif ($horaEntera >= 18 && $horaEntera <= 23) {
-        $franjas['noche'][] = substr($hora, 0, 5);
+        $franjas['noche'][] = $horaObj;
     }
 }
 

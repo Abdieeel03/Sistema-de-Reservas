@@ -48,20 +48,25 @@ function cargarHoras(franja) {
         fila.className = 'fila-horas';
 
         const grupo = todasLasHoras.slice(i, i + 3);
-        grupo.forEach(hora => {
+        grupo.forEach(horaObj => {
             const btn = document.createElement('button');
-            btn.textContent = hora;
+            btn.textContent = horaObj.hora;
             btn.className = 'btn-hora';
 
-            if (noDisponibles.includes(hora)) {
+            if (noDisponibles.includes(horaObj.hora)) {
                 btn.classList.add('no-disponible');
                 btn.disabled = true;
             } else {
                 btn.classList.add('disponible');
                 btn.addEventListener('click', () => {
-                    datos.hora = hora;
+                    datos.hora = horaObj.hora;
+                    datos.horario_id = horaObj.id;
+
                     const eventoHora = new CustomEvent("hora-seleccionada", {
-                        detail: { hora: hora }
+                        detail: {
+                            hora: horaObj.hora,
+                            id: horaObj.id
+                        }
                     });
                     document.dispatchEvent(eventoHora);
                 });
@@ -69,12 +74,10 @@ function cargarHoras(franja) {
 
             fila.appendChild(btn);
         });
-
         contenedorHoras.appendChild(fila);
     }
 }
 
-// Botones de franja: Día, Tarde, Noche
 botonesCabecera.forEach(btn => {
     btn.addEventListener('click', () => {
         botonesCabecera.forEach(b => b.classList.remove('activo'));

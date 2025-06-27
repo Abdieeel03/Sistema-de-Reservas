@@ -41,14 +41,14 @@ document.getElementById('form').addEventListener('submit', function (e) {
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    alert('Mensaje recibido:\nNombre: ' + data.nombre + '\nEmail: ' + data.email + '\nMensaje: ' + data.mensaje);
+                    alert('Mensaje recibido ✅. Nos pondremos en contacto contigo pronto.');
                     this.reset();
                 } else {
                     alert('Error: ' + data.message);
                 }
             })
             .catch(error => {
-                alert('Hubo un error al enviar el mensaje. Inténtalo de nuevo más tarde.');
+                alert('Hubo un error al enviar el mensaje. Inténtalo de nuevo más tarde. ❌');
                 console.error("Error:", error);
             });
     }

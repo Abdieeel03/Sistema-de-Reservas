@@ -105,7 +105,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.addEventListener("hora-seleccionada", (e) => {
         datos.horaSeleccionada = e.detail.hora;
-        console.log("Hora seleccionada:", datos.horaSeleccionada);
+        datos.horario_id = e.detail.id;
+        console.log("Hora guardada:", datos.horaSeleccionada, "ID:", datos.horario_id);
         iniciarSeccionMesas(datos.fechaSeleccionada, datos.horaSeleccionada);
         showStep(5);
     });
@@ -127,9 +128,27 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('btn-confirmar-reserva').addEventListener('click', () => {
-        alert("Reserva enviada al servidor (simulado)");
-        showStep(1);
-        datos = {};
+        fetch('/backend/registrar-reserva.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datos)
+        })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert("✅ Reserva registrada con éxito.");
+                    showStep(1);
+                    datos = {};
+                } else {
+                    alert("❌ Error al registrar la reserva: " + result.error);
+                }
+            })
+            .catch(error => {
+                console.error("Error en la solicitud:", error);
+                alert("❌ No se pudo registrar la reserva. Intenta nuevamente.");
+            });
     });
 
     document.getElementById('btn-volver').addEventListener('click', () => {
