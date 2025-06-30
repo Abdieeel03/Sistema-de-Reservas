@@ -38,7 +38,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    http_response_code(500);
+    http_response_code(400);
     echo json_encode(["error" => "Lo sentimos, la mesa ya está reservada, intente con otra."]);
     exit;
 }
@@ -69,6 +69,19 @@ if ($stmt->num_rows === 0) {
     }
 }
 $stmt->close();
+
+$stmt = $conn->prepare("SELECT COUNT(*) FROM reservas WHERE dni_cliente = ?");
+$stmt->bind_param("s", $dni);
+$stmt->execute();
+$stmt->bind_result($cantidadReservas);
+$stmt->fetch();
+$stmt->close();
+
+if ($cantidadReservas >= 2) {
+    http_response_code(400);
+    echo json_encode(["error" => "El cliente ya tiene 2 reservas registradas."]);
+    exit;
+}
 
 $stmt = $conn->prepare("INSERT INTO reservas (dni_cliente, fecha, horario_id, zona_id, mesa_id, num_personas) VALUES (?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("ssiiii", $dni, $fecha, $horario_id, $zona_id, $mesa_id, $personas);
