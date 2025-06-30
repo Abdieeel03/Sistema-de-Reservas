@@ -1,4 +1,4 @@
-<?php require_once('includes/header.php'); ?>
+<?php require_once('/includes/header.php'); ?>
 
 <main class="main-container">
 
@@ -22,13 +22,13 @@
             </p>
         </div>
         <div class="imagen-container">
-            <img src="./public/img/fondo-reservas.webp" alt="Restaurante Siete Sopas">
+            <img src="/public/img/fondo-reservas.webp" alt="Restaurante Siete Sopas">
         </div>
     </section>
 
     <section id="carta" class="seccion-container">
         <div class="imagen-container">
-            <img src="./public/img/img-lacarta.webp" alt="Restaurante Siete Sopas">
+            <img src="/public/img/img-lacarta.webp" alt="Restaurante Siete Sopas">
         </div>
         <div class="text-container">
             <h3>Nuestra Carta 🔎🍽️</h3>
@@ -36,12 +36,12 @@
                 Descubre todas las sopas y sabores que tenemos para ti. Desde clásicos peruanos
                 hasta opciones internacionales, ¡encuentra tu favorita!
             </p>
-            <a href="./public/resources/CartaSIETESOPAS.pdf" target="_blank">Ver Carta <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            <a href="/public/resources/CartaSIETESOPAS.pdf" target="_blank">Ver Carta <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
         </div>
     </section>
 
-    <?php require_once('includes/contact-form.php'); ?>
+    <?php require_once('/includes/contact-form.php'); ?>
 
 </main>
 
-<?php require_once('includes/footer.php'); ?>
+<?php require_once('/includes/footer.php'); ?>

@@ -33,7 +33,7 @@
         </div>
     </div>
 </footer>
-<script src="./public/js/formulario.js"></script>
+<script src="/public/js/formulario.js"></script>
 </body>
 
 </html>

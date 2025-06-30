@@ -3,7 +3,7 @@
         <h3 class="contacto-title-text">¡Te escuchamos!</h3>
         <p class="contacto-title-subtext">Déjanos un comentario sobre el servicio</p>
     </div>
-    <form id="form" action="backend/send-message.php" method="POST" class="contacto-form-container" novalidate>
+    <form id="form" action="/backend/send-message.php" method="POST" class="contacto-form-container" novalidate>
         <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
         <span class="error-message" id="error-nombre"></span>
 
