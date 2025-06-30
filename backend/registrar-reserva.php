@@ -57,6 +57,16 @@ if ($stmt->num_rows === 0) {
         echo json_encode(["error" => "Error al insertar el cliente."]);
         exit;
     }
+} else {
+    $stmt->close();
+    $sql = "UPDATE clientes SET nombre = ?, telefono = ?, email = ? WHERE dni = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssss", $nombre, $telefono, $email, $dni);
+    if (!$stmt->execute()) {
+        http_response_code(500);
+        echo json_encode(["error" => "Error al actualizar el cliente."]);
+        exit;
+    }
 }
 $stmt->close();
 
