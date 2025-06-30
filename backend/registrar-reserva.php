@@ -38,7 +38,8 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    echo json_encode(['status' => 'error', 'message' => 'La mesa ya está reservada en ese horario.']);
+    http_response_code(500);
+    echo json_encode(["error" => "Lo sentimos, la mesa ya está reservada, intente con otra."]);
     exit;
 }
 
