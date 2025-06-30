@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener("mesa-seleccionada", (e) => {
         datos.mesaSeleccionada = e.detail.mesa_id;
         datos.zonaSeleccionada = e.detail.zona_id;
+        datos.numeroMesa = e.detail.numeroMesa;
         console.log("Mesa seleccionada:", datos.mesaSeleccionada, "Zona:", datos.zonaSeleccionada);
         document.getElementById('resumen-nombre').textContent = datos.nombre;
         document.getElementById('resumen-dni').textContent = datos.dni;
@@ -145,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('resumen-personas').textContent = datos.personas;
         document.getElementById('resumen-fecha').textContent = datos.fechaSeleccionada;
         document.getElementById('resumen-hora').textContent = datos.horaSeleccionada;
-        document.getElementById('resumen-mesa').textContent = datos.mesaSeleccionada;
+        document.getElementById('resumen-mesa').textContent = datos.numeroMesa;
         document.getElementById('resumen-zona').textContent = datos.zonaSeleccionada == 1 ? 'Sala Principal' : 'Sala Exterior';
         showStep(6);
     });
@@ -175,8 +176,41 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('btn-volver').addEventListener('click', () => {
-        iniciarSeccionMesas(datos.fechaSeleccionada, datos.horaSeleccionada);
-        showStep(5);
+        if (!seccionResumen.classList.contains('hidden')) {
+            iniciarSeccionMesas(datos.fechaSeleccionada, datos.horaSeleccionada);
+            datos.mesaSeleccionada = null;
+            datos.zonaSeleccionada = null;
+            showStep(5);
+            return;
+        }
+
+        if (!seccionMesa.classList.contains('hidden')) {
+            iniciarSeccionHoras(datos.fechaSeleccionada);
+            datos.horaSeleccionada = null;
+            datos.horario_id = null;
+            showStep(4);
+            return;
+        }
+
+        if (!seccionHora.classList.contains('hidden')) {
+            iniciarSeccionCalendario();
+            datos.fechaSeleccionada = null;
+            showStep(3);
+            return;
+        }
+
+        if (!seccionFecha.classList.contains('hidden')) {
+            datos.personas = null;
+            showStep(2);
+            return;
+        }
+
+        if (!seccionPersonas.classList.contains('hidden')) {
+            datos = {};
+            showStep(1);
+            return;
+        }
+
     });
 
     btnDatos.addEventListener('click', function () { showStep(1); });

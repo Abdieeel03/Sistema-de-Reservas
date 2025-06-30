@@ -94,6 +94,9 @@
                         <button type="button" class="boton-personas">6</button>
                     </div>
                 </div>
+                <div class="botones">
+                    <button id="btn-volver" class="btn-volver">Volver</button>
+                </div>
         </section>
 
         <section id="seccion-fecha" class="seccion-reserva">
@@ -106,6 +109,9 @@
                     </div>
                     <div class="calendar-days" id="calendarDays"></div>
                     <div class="calendar-dates" id="calendarDates"></div>
+                </div>
+                <div class="botones">
+                    <button id="btn-volver" class="btn-volver">Volver</button>
                 </div>
             </div>
         </section>
@@ -123,6 +129,9 @@
                     </div>
                     <div id="contenedor-horas" class="horas"></div>
                 </div>
+                <div class="botones">
+                    <button id="btn-volver" class="btn-volver">Volver</button>
+                </div>
             </div>
         </section>
 
@@ -139,6 +148,9 @@
                             exterior</button>
                     </div>
                     <div id="contenedor-mesas" class="mesas"></div>
+                </div>
+                <div class="botones">
+                    <button id="btn-volver" class="btn-volver">Volver</button>
                 </div>
             </div>
         </section>
@@ -172,7 +184,7 @@
     </footer>
 
     <script src="/public/js/reservas/flujo.js""></script>
-    <script src="/public/js/reservas/calendario.js"></script>
+    <script src=" /public/js/reservas/calendario.js"></script>
     <script src="/public/js/reservas/horas.js"></script>
     <script src="/public/js/reservas/mesas.js"></script>
 

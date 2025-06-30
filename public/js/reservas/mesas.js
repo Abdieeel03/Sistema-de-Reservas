@@ -55,11 +55,13 @@ function cargarMesas(seccion) {
             btn.addEventListener('click', () => {
                 datos.mesa_id = mesa.id;
                 datos.zona_id = mesa.zona_id;
+                datos.numeroMesa = mesa.numero;
 
                 const eventoMesa = new CustomEvent("mesa-seleccionada", {
                     detail: {
                         mesa_id: mesa.id,
-                        zona_id: mesa.zona_id
+                        zona_id: mesa.zona_id,
+                        numeroMesa: mesa.numero
                     }
                 });
                 document.dispatchEvent(eventoMesa);
