@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
-$user = 'abdieeel';
-$password = '0312';
-$dbname = 'restaurante_reservas';
+$host = 'sql207.infinityfree.com';
+$user = 'if0_39346298';
+$password = 'marcelo031202';
+$dbname = 'if0_39346298_restaurante_reservas';
 
 // Crear conexión
 $conn = new mysqli($host, $user, $password, $dbname);
