@@ -175,42 +175,43 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 
-    document.getElementById('btn-volver').addEventListener('click', () => {
-        if (!seccionResumen.classList.contains('hidden')) {
-            iniciarSeccionMesas(datos.fechaSeleccionada, datos.horaSeleccionada);
-            datos.mesaSeleccionada = null;
-            datos.zonaSeleccionada = null;
-            showStep(5);
-            return;
-        }
+    document.querySelectorAll('.btn-volver').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (!seccionResumen.classList.contains('hidden')) {
+                iniciarSeccionMesas(datos.fechaSeleccionada, datos.horaSeleccionada);
+                datos.mesaSeleccionada = null;
+                datos.zonaSeleccionada = null;
+                showStep(5);
+                return;
+            }
 
-        if (!seccionMesa.classList.contains('hidden')) {
-            iniciarSeccionHoras(datos.fechaSeleccionada);
-            datos.horaSeleccionada = null;
-            datos.horario_id = null;
-            showStep(4);
-            return;
-        }
+            if (!seccionMesa.classList.contains('hidden')) {
+                iniciarSeccionHoras(datos.fechaSeleccionada);
+                datos.horaSeleccionada = null;
+                datos.horario_id = null;
+                showStep(4);
+                return;
+            }
 
-        if (!seccionHora.classList.contains('hidden')) {
-            iniciarSeccionCalendario();
-            datos.fechaSeleccionada = null;
-            showStep(3);
-            return;
-        }
+            if (!seccionHora.classList.contains('hidden')) {
+                iniciarSeccionCalendario();
+                datos.fechaSeleccionada = null;
+                showStep(3);
+                return;
+            }
 
-        if (!seccionFecha.classList.contains('hidden')) {
-            datos.personas = null;
-            showStep(2);
-            return;
-        }
+            if (!seccionFecha.classList.contains('hidden')) {
+                datos.personas = null;
+                showStep(2);
+                return;
+            }
 
-        if (!seccionPersonas.classList.contains('hidden')) {
-            datos = {};
-            showStep(1);
-            return;
-        }
-
+            if (!seccionPersonas.classList.contains('hidden')) {
+                datos = {};
+                showStep(1);
+                return;
+            }
+        });
     });
 
     btnDatos.addEventListener('click', function () { showStep(1); });
