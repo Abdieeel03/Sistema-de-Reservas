@@ -601,7 +601,7 @@ main.secciones-reserva {
     color: var(--color-primary-variant);
 }
 
-.resumen-botones {
+.botones {
     margin-top: 2rem;
     display: flex;
     justify-content: space-between;
@@ -729,7 +729,7 @@ footer {
         font-size: 1rem;
     }
 
-    .resumen-botones {
+    .botones {
         flex-direction: column;
         gap: 1rem;
         align-items: stretch;

@@ -158,7 +158,7 @@
                     <p><strong>Zona:</strong> <span id="resumen-zona"></span></p>
                 </div>
 
-                <div class="resumen-botones">
+                <div class="botones">
                     <button id="btn-confirmar-reserva" class="btn-confirmar">Confirmar Reserva</button>
                     <button id="btn-volver" class="btn-volver">Volver</button>
                 </div>
@@ -172,7 +172,7 @@
     </footer>
 
     <script src="/public/js/reservas/flujo.js""></script>
-    <script src=" /public/js/reservas/calendario.js"></script>
+    <script src="/public/js/reservas/calendario.js"></script>
     <script src="/public/js/reservas/horas.js"></script>
     <script src="/public/js/reservas/mesas.js"></script>
 
