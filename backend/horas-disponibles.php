@@ -2,7 +2,6 @@
 require_once 'db.php';
 header("Content-Type: application/json");
 
-// Consultar todas las horas disponibles de la tabla "horarios"
 $sql = "SELECT id, hora FROM horarios ORDER BY hora";
 $result = $conn->query($sql);
 
@@ -21,7 +20,6 @@ while ($row = $result->fetch_assoc()) {
         "hora" => substr($hora, 0, 5)
     ];
 
-    // Convertir "HH:MM:SS" a int para comparación
     $horaEntera = intval(substr($hora, 0, 2));
 
     if ($horaEntera >= 9 && $horaEntera < 12) {

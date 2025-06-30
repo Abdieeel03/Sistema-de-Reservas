@@ -18,7 +18,7 @@ function obtenerHorasNoDisponibles(fecha) {
         .then(res => res.json())
         .then(data => {
             horasNoDisponibles = data;
-            cargarHoras(franjaSeleccionada); // Recargar con restricciones
+            cargarHoras(franjaSeleccionada);
             console.log("Horarios no disponibles cargados:", horasNoDisponibles);
         })
         .catch(err => {
@@ -29,11 +29,10 @@ function obtenerHorasNoDisponibles(fecha) {
 function iniciarSeccionHoras(fecha) {
     botonesCabecera.forEach(btn => btn.classList.remove('activo'));
     document.getElementById('btn-dia').classList.add('activo');
-    franjaSeleccionada = 'dia'; // Reiniciar a día por defecto
+    franjaSeleccionada = 'dia';
     obtenerHorasNoDisponibles(fecha);
 }
 
-// Mostrar los botones de hora por franja
 function cargarHoras(franja) {
     franjaSeleccionada = franja;
     contenedorHoras.innerHTML = '';

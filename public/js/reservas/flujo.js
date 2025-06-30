@@ -73,16 +73,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('formulario-reserva').addEventListener('submit', function (e) {
         e.preventDefault();
-        datos.nombre = document.getElementById('nombre').value;
-        datos.dni = document.getElementById('dni').value;
-        datos.telefono = document.getElementById('telefono').value;
-        datos.email = document.getElementById('email').value;
+        let nombre = document.getElementById('nombre').value.trim();
+        let dni = document.getElementById('dni').value.trim();
+        let telefono = document.getElementById('telefono').value.trim();
+        let email = document.getElementById('email').value.trim();
+        let terminos = document.getElementById('terminos').checked;
 
-        if (!datos.nombre || !datos.dni || !datos.telefono || !datos.email) {
-            alert('Por favor, ingrese todos los datos.');
+        datos.nombre = nombre;
+        datos.dni = dni;
+        datos.telefono = telefono;
+        datos.email = email;
+
+        if (!nombre || !dni || !telefono || !email || !terminos) {
+            alert("❌ Por favor, completa todos los campos y acepta los términos.");
             return;
         }
 
+        if (!/^\d{8}$/.test(dni)) {
+            alert("❌ El DNI debe tener 8 dígitos.");
+            return;
+        }
+        if (!/^\d{9}$/.test(telefono)) {
+            alert("❌ El teléfono debe tener 9 dígitos.");
+            return;
+        }
+        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+            alert("❌ El email no es válido.");
+            return;
+        }
+        if (!terminos) {
+            alert("❌ Debes aceptar los términos y condiciones.");
+            return;
+        }
         showStep(2);
     });
 

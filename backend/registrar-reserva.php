@@ -2,10 +2,8 @@
 require 'db.php';
 header('Content-Type: application/json');
 
-// Obtener y decodificar el cuerpo JSON
 $input = json_decode(file_get_contents('php://input'), true);
 
-// Validar datos requeridos
 if (!isset(
     $input['dni'],
     $input['nombre'],

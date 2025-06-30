@@ -1,24 +1,19 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-require 'db.php'; // Asegúrate de tener aquí tu conexión $conn
+require 'db.php';
 
 header('Content-Type: application/json');
 
 if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-    // Recibir datos del formulario
+    
     $nombre = trim($_POST['nombre'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $mensaje = trim($_POST['mensaje'] ?? '');
 
-    // Validación simple
     if (empty($nombre) || empty($email) || empty($mensaje)) {
         echo json_encode(['status' => 'error', 'message' => 'Todos los campos son obligatorios.']);
         exit;
     }
 
-    // Insertar en la base de datos
     $sql = "INSERT INTO contactos (nombre, email, mensaje, fecha) VALUES (?, ?, ?, NOW())";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {

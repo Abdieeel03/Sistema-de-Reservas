@@ -2,7 +2,6 @@
 require 'db.php';
 header('Content-Type: application/json');
 
-// Obtener totales
 $res = $conn->query("SELECT COUNT(*) AS total_mesas FROM mesas");
 $totalMesas = $res->fetch_assoc()['total_mesas'];
 
@@ -11,7 +10,6 @@ $totalHoras = $res->fetch_assoc()['total_horas'];
 
 $capacidadMaximaPorDia = $totalMesas * $totalHoras;
 
-// Buscar fechas con esa cantidad total de reservas
 $sql = "SELECT fecha
         FROM reservas
         GROUP BY fecha

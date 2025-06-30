@@ -2,7 +2,6 @@
 require 'db.php';
 header('Content-Type: application/json');
 
-// Validar parámetros
 if (!isset($_GET['fecha']) || !isset($_GET['hora'])) {
     http_response_code(400);
     echo json_encode(["error" => "Faltan los parámetros 'fecha' y/o 'hora'."]);
@@ -12,13 +11,11 @@ if (!isset($_GET['fecha']) || !isset($_GET['hora'])) {
 $fecha = $_GET['fecha'];
 $hora = $_GET['hora'];
 
-// Inicializar array de zonas
 $noDisponibles = [
     "principal" => [],
     "exterior" => []
 ];
 
-// SQL para obtener mesa_id y zona_id para fecha y hora exactas
 $sql = "SELECT r.mesa_id, m.zona_id
         FROM reservas r
         JOIN mesas m ON r.mesa_id = m.id

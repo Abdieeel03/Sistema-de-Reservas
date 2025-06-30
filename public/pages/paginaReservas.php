@@ -42,31 +42,31 @@
                     <h4>Ingrese sus datos:</h4>
                 </div>
                 <div class="form-container">
-                    <form id="formulario-reserva">
+                    <form id="formulario-reserva" novalidate>
                         <div class="inputs">
                             <div class="input-container">
                                 <label for="nombre">Nombre:</label>
-                                <input type="text" id="nombre" name="nombre" required>
+                                <input type="text" id="nombre" name="nombre">
                             </div>
                             <div class="input-container">
                                 <label for="dni">Dni:</label>
-                                <input type="text" id="dni" name="dni" required>
+                                <input type="text" id="dni" name="dni">
                             </div>
                         </div>
                         <div class="inputs">
                             <div class="input-container">
                                 <label for="telefono">Teléfono:</label>
-                                <input type="tel" id="telefono" name="telefono" required>
+                                <input type="tel" id="telefono" name="telefono">
                             </div>
                             <div class="input-container">
                                 <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" required>
+                                <input type="email" id="email" name="email">
                             </div>
                         </div>
                         <div class="terminos-condiciones">
                             <div class="input-container">
-                                <input type="checkbox" id="terminos" name="terminos" required>
-                                <label for="terminos">Acepto los <a href="../docs/terminos.html"
+                                <input type="checkbox" id="terminos" name="terminos">
+                                <label for="terminos">Acepto los <a href="/docs/terminos.html"
                                         target="_blank">términos y condiciones</a></label>
                             </div>
                         </div>
