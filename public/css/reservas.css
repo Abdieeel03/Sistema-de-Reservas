@@ -573,15 +573,6 @@ main.secciones-reserva {
 }
 
 /*Seccion resumen*/
-#seccion-resumen {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-    height: 100%;
-}
 
 .container-resumen {
     background-color: var(--color-surface);

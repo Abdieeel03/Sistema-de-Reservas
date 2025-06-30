@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         seccionFecha.classList.add('hidden');
         seccionHora.classList.add('hidden');
         seccionMesa.classList.add('hidden');
+        seccionResumen.classList.add('hidden');
 
         btnDatos.classList.remove('activo');
         btnPersonas.classList.remove('activo');
