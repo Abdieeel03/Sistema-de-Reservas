@@ -48,6 +48,17 @@ if ($stmt->num_rows === 0) {
 }
 $stmt->close();
 
+$sql = "SELECT id FROM reservas WHERE fecha = ? AND horario_id = ? AND mesa_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sii", $fecha, $horario_id, $mesa_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    echo json_encode(['status' => 'error', 'message' => 'La mesa ya está reservada en ese horario.']);
+    exit;
+}
+
 $stmt = $conn->prepare("INSERT INTO reservas (dni_cliente, fecha, horario_id, zona_id, mesa_id, num_personas) VALUES (?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("ssiiii", $dni, $fecha, $horario_id, $zona_id, $mesa_id, $personas);
 if ($stmt->execute()) {
