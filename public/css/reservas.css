@@ -767,6 +767,13 @@ footer {
         width: 100%;
     }
 
+    .btn-hora {
+        padding: 4px 20px;
+        min-width: 100px;
+        height: 30px;
+        font-size: var(--fs-button-sm);
+    }
+
     .btn-mesa {
         padding: 4px 20px;
         min-width: 100px;
