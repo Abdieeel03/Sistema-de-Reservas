@@ -1,4 +1,4 @@
-<?php require_once('/includes/header.php'); ?>
+<?php require_once('includes/header.php'); ?>
 
 <main class="main-container">
 
@@ -40,8 +40,8 @@
         </div>
     </section>
 
-    <?php require_once('/includes/contact-form.php'); ?>
+    <?php require_once('includes/contact-form.php'); ?>
 
 </main>
 
-<?php require_once('/includes/footer.php'); ?>
+<?php require_once('includes/footer.php'); ?>
