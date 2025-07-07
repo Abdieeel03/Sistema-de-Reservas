@@ -43,5 +43,5 @@
     <?php require_once('includes/contact-form.php'); ?>
 
 </main>
-
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/50241161.js"></script>
 <?php require_once('includes/footer.php'); ?>
